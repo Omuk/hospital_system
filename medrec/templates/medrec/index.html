@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'medrec/base.html' %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital of Champions</title>
+</head>
+
+<body>
+    {% block content %}
+    <h1>This is the HomePage</h1>
+    <div>
+        <h4>Please Register with right credentials</h4>
+        <div>
+            <span><a href="{% url 'docreg' %}">Doctor Registration</a></span>
+        </div>
+        <div>
+            <span><a href="{% url 'coderreg' %}">Coder Registration</a></span> 
+        </div>
+    </div>
+    <div>
+        <h4>Or Please Login with right credentials if you already Have an Account</h4>
+        <div>
+            <span><a href="{% url 'doclogin' %}">Doctor Login</a></span>
+        </div>
+        <div>
+            <span><a href="{% url 'coderlogin' %}">Coder Login</a></span> 
+        </div>
+    </div>
+    
+    {% endblock content %}
+</body>
+</html>
