@@ -98,8 +98,9 @@
                                 <input type="submit" class="btn btn-success">
                             </form>
                             
-                                <li v-for="(icd,index) in data" :key="index">
-                                   {{icd}}
+                                <li class="list-group" v-for="(icd,index) in data" :key="index">
+                                   {{icd[0]}}--{{icd[1]}}
+                                   
                                        
                                 </li>  
                         </div>
@@ -130,8 +131,8 @@
                     <input type="radio" id="plan_tab" name="assessment_tabs">
                     <label for="plan_tab">Plan</label>
                     <div class="tab">
-                        <h3>Pharmacy</h3>
-                        <p>Medical Problems</p>
+                        <h3>Plan</h3>
+                        <p>Medical Problems: </p>
                         <p>Laboratory</p>
                         <p>Radiology</p>
                         <p>Medications</p>
@@ -214,3 +215,6 @@
 
 </body>
 </html>
+
+
+<!-- Under Bill, add diagnosis, lab, xray----- -->
