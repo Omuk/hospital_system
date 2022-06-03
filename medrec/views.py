@@ -6,6 +6,9 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse 
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 
 # Create your views here.
@@ -177,3 +180,14 @@ def user_logout(request):
 
 def pat_rec(request):
     return render(request, 'medrec/pat_rec.html')
+
+#                                                          ###FINAL PART
+def patient_search(request):
+    if 'term' in request.GET:
+        patient = Patient.objects.filter(name__istartswith=request.GET.get('term'))
+        names = list()
+        for pat_search in patient:
+            names.append(pat_search.name)
+            return JsonResponse(names, safe=False)
+    
+    return render(request, 'app_auto/patsearch.html')
