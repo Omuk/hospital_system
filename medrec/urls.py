@@ -11,4 +11,5 @@ urlpatterns = [
     path('pat_rec/', views.pat_rec, name='patrec'),
     path('user_logout/', views.user_logout, name='logout'),
     path('patsearch/', views.patient_search, name='patsearch'),
+    path('getData/', views.getData, name='getData'),
 ]

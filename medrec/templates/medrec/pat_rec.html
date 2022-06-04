@@ -102,13 +102,14 @@
                                         <input type="search" class="form-control" v-model="query">
                                         <input type="submit" class="btn btn-success">
                                     </form>
-                                    
-                                        <li class="list-group" v-for="(icd,index) in data" :key="index">
-                                            {{icd}}
-                                               
-                                        </li>  
+
+                                    <select name="" id="">
+                                        <option v-for="(icd,index) in data" :key="index">
+                                            [[icd]]
+                                        </option>
+                                    </select>
+                                </div>
                                         
-                                
                             </div>
                         
                             <input type="radio" id="lab_tab" name="assessment_tabs">
@@ -143,6 +144,7 @@
                                 <p>Plan</p>
                             </div>
                         </div>
+                    </div>
                     </div>
             <hr>
                     <div class="billing">
@@ -188,12 +190,13 @@
                 <script src='https://clinicaltables.nlm.nih.gov/autocomplete-lhc-versions/17.0.2/autocomplete-lhc.min.js'></script>
                 <script>
                     var app = new Vue({
+                        delimiters: ['[[',']]'],
                         el: '#app',
                         data() {
                             return {
                                 query: '',
                                 data:[]
-                            }
+                    }
                             
                         },
                         methods: {
@@ -219,7 +222,7 @@
         
         </body>
         
-    {% endblock content %}
+        {% endblock content %}
         
 </html>
 

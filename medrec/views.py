@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .serializers import *
 
 
 # Create your views here.
@@ -191,3 +192,9 @@ def patient_search(request):
             return JsonResponse(names, safe=False)
     
     return render(request, 'app_auto/patsearch.html')
+
+@api_view(['GET'])
+def getData(request):
+    items =ICDSearch.objects.all()
+    serializer = ICDSearchSerializer(items, many=True)
+    return Response(serializer.data)
