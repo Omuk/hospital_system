@@ -39,3 +39,9 @@ class ICDSearch(models.Model):
 
     def __str__(self):
         return self.title
+
+class medicalRecord(models.Model):
+    diagnosis = models.TextField(max_length=50)
+
+    def __str__(self):
+        return self.diagnosis

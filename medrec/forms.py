@@ -65,3 +65,8 @@ class PatientRegisterForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class MedicalRecordForm(forms.ModelForm):
+    class Meta:
+        model = medicalRecord
+        fields = '__all__'

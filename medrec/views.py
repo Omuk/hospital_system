@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .forms import *
 from .models import *
 from django.contrib.auth import login,authenticate,logout
@@ -195,6 +195,83 @@ def patient_search(request):
 
 @api_view(['GET'])
 def getData(request):
-    items =ICDSearch.objects.all()
-    serializer = ICDSearchSerializer(items, many=True)
-    return Response(serializer.data)
+    response = Response()
+    todos = ICDSearch.objects.all()
+    todos_serializer = ICDSearchSerializer(todos, many=True)
+
+    response.data = {
+        'todos':todos_serializer.data 
+    }
+    return response
+
+@api_view(['POST'])
+def post_code(request):
+    response = Response()
+
+    code_to_save = request.data.get('code_to_save')
+
+    code_serializer = ICDSearchSerializer(data={'title': code_to_save})
+
+    if code_serializer.is_valid ():
+        code_serializer.save()
+
+    sel_codes = ICDSearch.objects.all()
+
+    code_serializer = ICDSearchSerializer(sel_codes, many=True)
+
+    response.data = {
+        'sel_codes': code_serializer.data
+    }
+
+    return response
+
+# ORR THIS ONE TO SAVE
+# @api_view(['POST'])
+
+# def save_code(request, code_id):
+#     response = Response()
+
+#     code_sav = get_object_or_404(ICDSearch,id=code_id)
+#     code_sav.save()
+
+#     sel_codes = ICDSearch.objects.all()
+
+#     code_serializer = ICDSearchSerializer(sel_codes, many=True)
+
+#     response.data = {
+#         'sel_codes': code_serializer.data
+#     }
+
+#     return response
+ ##DELETE
+
+def del_code(request, code_id):
+    response = Response()
+
+    code_del = get_object_or_404(ICDSearch,id=code_id)
+    code_del.delete()
+
+    sel_codes = ICDSearch.objects.all()
+
+    code_serializer = ICDSearchSerializer(sel_codes, many=True)
+
+    response.data = {
+        'sel_codes': code_serializer.data
+    }
+
+    return response
+
+
+def pat_diagnosis(request, pk):
+    icd_form = medicalRecord.objects.get(id=pk)
+    form = MedicalRecordForm(instance=icd_form)
+
+    context = {'icd_form': icd_form, 'form':form}
+    if request.method =='POST':
+        form = MedicalRecordForm(request.POST, instance=icd_form)
+        if form.is_valid():
+            form.save()
+
+            return redirect('patrec')
+    return render(request, 'medrec/pat_rec.html')
+    
