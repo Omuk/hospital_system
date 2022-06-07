@@ -67,6 +67,13 @@ class PatientRegisterForm(UserCreationForm):
         return user
 
 class MedicalRecordForm(forms.ModelForm):
+    
+    def __init__(self, *args, **kwargs):
+        super(MedicalRecordForm, self).__init__(*args, **kwargs)
+        for name in self.fields.keys():
+            self.fields[name].widget.attrs.update({
+                'class': 'form-control',
+            })
     class Meta:
         model = medicalRecord
-        fields = '__all__'
+        fields = ('__all__')

@@ -15,5 +15,8 @@ urlpatterns = [
     path('pat_diag/<int:pk>/', views.pat_diagnosis, name='pat_diag'),
     path('getData/', views.getData, name='getData'),
     path('create/', views.post_code, name='create_todo'),
-    path('delete/<int:code_id>', views.del_code, name='delete_todo')
+    path('delete/<int:code_id>', views.del_code, name='delete_todo'),
+
+    path('recview/', views.medrec_View, name='recview'),
+    path('post/ajax/icdcodes', views.postCode, name='post_code')
 ]

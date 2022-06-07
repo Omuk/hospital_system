@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import *
+from django.core import serializers
 
 
 # Create your views here.
@@ -274,4 +275,25 @@ def pat_diagnosis(request, pk):
 
             return redirect('patrec')
     return render(request, 'medrec/pat_rec.html')
+
+def medrec_View(request):
+    form =MedicalRecordForm()
+    code_forms = medicalRecord.objects.all()
+
+    return render(request, 'medrec/code_index.html', {'form':form, 'code_forms': code_forms})
+
+
+def postCode(request):
+    if request.method == "POST":
+        form =MedicalRecordForm(request.POST)
+        if form.is_valid():
+            instance = form.save()
+            code_inst_ser = serializers.serialize('json', [instance,])
+
+            return JsonResponse({'instance':code_inst_ser},status=200)
+        else:
+            return JsonResponse({'error': form.errors}, status=400)
+    
+    return JsonResponse({'error': ''}, status=400)
+
     

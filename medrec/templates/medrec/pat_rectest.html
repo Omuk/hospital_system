@@ -99,29 +99,25 @@
                                 <div id="app">
                                     <h1>Get Codes</h1>
                                     <form @submit.prevent="getCodes">
-                                        <input type="search" class="form-control" v-model="query">
-                                        <input type="submit" class="btn btn-success">
+                                        <div>
+                                            <input type="search" class="form-control" v-model="query" placeholder="Search ICD Codes">
+                                            <button class="btn btn-success">Search</button>
+                                        </div>
                                     </form>
 
-                                    <select name="" id="">
-                                        <option v-for="(icd,index) in data" :key="index">
-                                            [[icd]]
-                                        </option>
-                                    </select>
+                                    <form action="">
+                                        <select name="" id="" @click="getCode()">
+                                            <option v-for="(icd,index) in data" :key="index">
+                                                [[icd]]
+                                            </option>
+                                        </select>
+                                        <button onclick="myFunction([[index]])" class="btn btn-danger">Submit</button>
+                                       
+                                    </form>
+                                       
                                 </div>
-                                      
-                                
-
-                                <div >
-                                    <select name="" id="" @click="getCode">
-                                        <option v-for="(icd,index) in data" :key="index">
-                                            [[icd]]
-                                        </option>
-                                    </select>
-                                    <button class="btn btn-danger">Submit</button>
-                                </div>
+                                        
                             </div>
-                        
                             <input type="radio" id="lab_tab" name="assessment_tabs">
                             <label for="lab_tab">Laboratory</label>
                             <div class="tab">
@@ -222,6 +218,15 @@
                             }
         
                         },
+                        getCode: function(e){
+                            var codeSel = e.target.index,
+                            index = e.target.codes;
+
+                        },
+                        myFunction: function(){
+                            object.addEventListener('click', index)
+                        },
+
                         created: function() {
         
                         }
