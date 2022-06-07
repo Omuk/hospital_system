@@ -105,6 +105,40 @@
                                             <button class="btn btn-success">Search</button>
                                         </div>
                                     </form>
+                                    <form action="" id="code-form">
+                                        <div class="row">
+                                            {% csrf_token %}
+                                            
+                                            {% for field in form  %}
+                                                <label class="col-12">{{field.label}}</label>
+                                                {{field}}
+                                            {% endfor %}
+                                                <input type="submit" class="btn btn-success" value="Save Code" />
+                                        </div>
+
+
+
+                                        
+                                    <table class="table table-striped table-sm" id="my_friends">
+                                        <thead>
+                                            <tr>
+                                                <th>Diagnosis: </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            {% for icdcodes in code_forms  %}
+                                            <tr>
+                                                <td>{{icdcodes.diagnosis}}</td>
+                                            </tr>
+                                                
+                                            {% endfor %}
+                                                
+                                        </tbody>
+                                    </table>
+
+                                    </form>
+
                                     <form action="">
                                         
                                         <select name="" id="" @click="getCode()">
@@ -112,23 +146,10 @@
                                                 [[icd]]
                                             </option>
                                         </select>
-                                        <button onclick="myFunction([[index]])" class="btn btn-danger">Submit</button>   
+                                        <button onclick="myFunction([[index]])" class="btn btn-danger">Submit</button>
+                                       
                                     </form>
-
-                                    <form action="" id="code-form">
-
-                                        <div>
-                                               {% csrf_token %}
-                                               
-                                               {% for field in form  %}
-                                               
-                                                   <label class="col-12">{{field.label}}</label>
-                                                   {{field}}
-                                               {% endfor %}
-                                               <button class="btn btn-danger">Save</button>
-                                           </div>
-                                       </form>
-
+                                       
                                 </div>
                                         
                             </div>
@@ -158,13 +179,27 @@
                             <div class="tab">
                                 
                                 <div>
-                                    <h3>Medical Problems</h3>
-                                    
+                                    <p>Medical Problems</p>
+                                    <div class="container-fluid">
+                                        <form id="code-form">
+                                            <div class="row">
+                                                {% csrf_token %}
+                                                {% for field in form %}
+                                                <div class="form-group col-4">
+                                                    <label class="col-12">{{ field.label }}</label>
+                                                    {{ field }}
+                                                </div>
+                                                {% endfor %}
+                                                <input type="submit" class="btn btn-primary" value="Create Fri" />
+                                            </div>
+                                        <form>
+                                    </div>
+                                    <hr />
                                     <div class="container-fluid">
                                         <table class="table table-striped table-sm" id="my_friends">
                                             <thead>
                                                 <tr>
-                                    
+                                                    <th>Diagnosis</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -308,7 +343,3 @@
         {% endblock content %}
         
 </html>
-        
-
-
-

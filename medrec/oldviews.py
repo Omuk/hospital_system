@@ -76,6 +76,52 @@ def pat_reg(request):
     }
     return render(request, 'medrec/pat_reg.html', context)
 
+##dance with django on diagnosis page.
+
+
+
+
+
+# def staff_login(request):
+#     error = ''
+#     user_page=''
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
+#                 login(request,user)
+#                 error = ' no'
+#                 hos_spec = request.user.groups.all()[0].user_name
+#                 if 'next' in request.POST:
+#                     return redirect (request.POST.get('next'))
+#                 elif hos_spec == 'Physician':
+#                     user_page = 'physician'
+#                     context = {'error': error, 'user_page':user_page, 'form':form}
+#                     return render(request, 'pat_reg', context)
+#                 elif hos_spec == 'CodeSpecialist':
+#                     user_page = 'codespec'
+#                     context = {'error': error, 'user_page':user_page, 'form':form}
+#                     return render(request, 'pat_reg', context)
+
+
+#                 # elif 'next' in request.POST:
+#                 #     return redirect (request.POST.get('next'))
+#                 else:
+#                     messages.info(request, f"Successful Login {username}")
+#                     return redirect('pat_rec')
+
+#     else:
+#         form = AuthenticationForm()
+    
+#     context = {
+#         'form':form
+#     }
+
+#     return render(request, 'medrec/doc_login.html', context)
+
 
 
 def doc_login(request):
@@ -135,23 +181,7 @@ def user_logout(request):
     return redirect('index')
 
 def pat_rec(request):
-    form =MedicalRecordForm()
-    code_forms = medicalRecord.objects.all()
-
-    return render(request, 'medrec/pat_rec.html', {'form':form, 'code_forms': code_forms})
-
-def postCode(request):
-    if request.method == "POST":
-        form =MedicalRecordForm(request.POST)
-        if form.is_valid():
-            instance = form.save()
-            code_inst_ser = serializers.serialize('json', [instance,])
-
-            return JsonResponse({'instance':code_inst_ser},status=200)
-        else:
-            return JsonResponse({'error': form.errors}, status=400)
-    
-    return JsonResponse({'error': ''}, status=400)
+    return render(request, 'medrec/pat_rec.html')
 
 #                                                          ###FINAL PART
 def patient_search(request):
@@ -196,6 +226,25 @@ def post_code(request):
 
     return response
 
+# ORR THIS ONE TO SAVE
+# @api_view(['POST'])
+
+# def save_code(request, code_id):
+#     response = Response()
+
+#     code_sav = get_object_or_404(ICDSearch,id=code_id)
+#     code_sav.save()
+
+#     sel_codes = ICDSearch.objects.all()
+
+#     code_serializer = ICDSearchSerializer(sel_codes, many=True)
+
+#     response.data = {
+#         'sel_codes': code_serializer.data
+#     }
+
+#     return response
+ ##DELETE
 
 def del_code(request, code_id):
     response = Response()
@@ -234,17 +283,15 @@ def medrec_View(request):
     return render(request, 'medrec/code_index.html', {'form':form, 'code_forms': code_forms})
 
 
-# def postCode(request):
-#     if request.method == "POST":
-#         form =MedicalRecordForm(request.POST)
-#         if form.is_valid():
-#             instance = form.save()
-#             code_inst_ser = serializers.serialize('json', [instance,])
+def postCode(request):
+    if request.method == "POST":
+        form =MedicalRecordForm(request.POST)
+        if form.is_valid():
+            instance = form.save()
+            code_inst_ser = serializers.serialize('json', [instance,])
 
-#             return JsonResponse({'instance':code_inst_ser},status=200)
-#         else:
-#             return JsonResponse({'error': form.errors}, status=400)
+            return JsonResponse({'instance':code_inst_ser},status=200)
+        else:
+            return JsonResponse({'error': form.errors}, status=400)
     
-#     return JsonResponse({'error': ''}, status=400)
-
-    
+    return JsonResponse({'error': ''}, status=400)
