@@ -24,14 +24,45 @@
          new Def.Autocompleter.Search('icd10', 'https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name',
         {colHeaders: ['Code', 'Name']});
 
-        $( function() {
-    
-        $( "#icd10" ).autocomplete({
-        
-            source: "{% url 'https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name' %}"
-            // source: "{% url 'patsearch' %}"
-        });
-    } );
+        /*
+                        On submiting the form, send the POST ajax
+                        request to server and after successfull submission
+                        display the object.
+                    */
+                    $("#code-form").submit(function (e) {
+                        // preventing from page reload and default actions
+                        e.preventDefault();
+                        // serialize the data for sending the form data.
+                        var serializedData = $(this).serialize();
+                        // make POST ajax call
+                        $.ajax({
+                            type: 'POST',
+                            url: "{% url 'post_code' %}",
+                            data: serializedData,
+                            success: function (response) {
+                                // on successfull creating object
+                                // 1. clear the form.
+                                $("#code-form").trigger('reset');
+                                // 2. The diagnosis code
+                                $("#id_diagnosis").focus();
+                
+                                
+                                var instance = JSON.parse(response["instance"]);
+                                var fields = instance[0]["fields"];
+                                $("#the_icd_codes tbody").prepend(
+                                    `<tr>
+                                    <td>${fields["diagnosis"]||""}</td>
+                                    </tr>`
+                                )
+                            },
+                            error: function (response) {
+                                // alert the error if any error occured
+                                alert(response["responseJSON"]["error"]);
+                            }
+                        })
+                    })
+
+       
 
 
     </script>
@@ -47,3 +78,6 @@
                     // codeFocus = new Def.Autocompleter.Search('icd10', 'https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name',{colHeaders: ['Code', 'Name']});
 
                     // $("#id_diagnosis").focus();
+
+
+                    Work 

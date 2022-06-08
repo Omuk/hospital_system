@@ -192,7 +192,7 @@
                                                 [[icd]]
                                             </option>
                                         </select>
-                                        <button id="id_diagnosis" class="btn btn-danger">Submit</button>   
+                                        <button id="" class="btn btn-danger">Submit</button>   
                                     </form>
 
                                     <form action="" id="code-form">
@@ -201,8 +201,7 @@
                                                
                                                {% for field in form  %}
                                                
-                                                   <label class="col-12">{{field.label}}</label>
-                                                   {{field}}
+                                                   <label class="col-12">{{field.label}}:{{field}}</label>
                                                {% endfor %}
                                                <button class="btn btn-danger">Save</button>
                                            </div>
@@ -384,12 +383,11 @@
 
                     
                 </script>
-                
-        
         
         </body>
         
         {% endblock content %}
+        <!-- WORK ON THE DELETE AND UPDATE BUTTONS -->
         
 </html>
         
