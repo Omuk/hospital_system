@@ -34,68 +34,148 @@
                     <div class="demo">
                         
                         <div class="pt_pic">
-                            <h1>Patient Picture</h1>
-                            <button>Submit</button> <button>Update</button> <button>Add</button>
+                            
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">About Me</h5>
+                                  <p class="card-text">Its My Time to Shine</p>
+                                  <button>Submit</button> <button>Update</button> <button>Add</button>
+                                  <a href="#" class="btn btn-primary">See More</a>
+                                </div>
+                              </div>
                         </div>
                         <div class="demo_info">
-                            <h1>Demographic Information</h1>
-                            I want an alert box when this is clicked
-                            <button>Submit</button> <button>Update</button> <button>Add</button>
+                            <div class="card" style="width: 18rem;">
+                                <h6>My Information</h6>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Name:</li>
+                                  <li class="list-group-item">Identity Number:</li>
+                                  <button>Submit</button> <button>Update</button> <button>Add</button>
+                                  <a href="#" class="btn btn-primary">See More</a>
+                                </ul>
+                              </div>
                         </div>
                         <div class="hedi_meas">
-                            <h1>HEDIS Measures</h1>
-                            <button>Submit</button> <button>Update</button> <button>Add</button>
+                            <div class="card" style="width: 18rem;">
+                                <h6>Am at Risk For</h6>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Diabetes</li>
+                                  <li class="list-group-item">Cancer:</li>
+                                  <button>Submit</button> <button>Update</button> <button>Add</button>
+                                  <a href="#" class="btn btn-primary">See More</a>
+                                </ul>
+                              </div>
+
                         </div>
                         <div class="chron_hx">
-                            <h1>Chronic History</h1>
-                            <button>Submit</button> <button>Update</button> <button>Add</button>
+                            <div class="card" style="width: 18rem;">
+                                <h6>My Medical History</h6>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">Obesity</li>
+                                  <li class="list-group-item">Tuberculosis</li>
+                                  <button>Submit</button> <button>Update</button> <button>Add</button>
+                                  <a href="#" class="btn btn-primary">See More</a>
+                                </ul>
+                              </div>
+
                         </div>
                     </div>
             <hr>
             <h3 style="text-align:center">Vital Signs</h3>
-                    <div class="vital">
-                        <div class="vit_sign">
-                                <p>BP</p>
-                                <p>Pulse</p> 
-                                <p>Oxygen
-                                RR 
-                                Temp 
-                                Pain 
-                                HT
-                                WT</p> 
-                        </div>
-                        <div class="ale_rt">
-                                <p>AOO *3 --- dropdown selection</p>
-                                <p>NAD --- Yes or No</p>
-                                <p>Clear to Auscultation</p>
-                        </div>
-            
-                        <div class="obser">
-                            <p>Other Types of Observable Assessment</p>
-                            <p>PERLA</p>
-                            <p>Verbal</p>
-                            
-                        </div>
-            
+            <div class="row">
+                <div class="col-sm-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Physical Attributes</h5>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Height: </li>
+                        <li class="list-group-item">Weight:</li>
+                        <button>Submit</button> <button>Update</button> <button>Add</button>
+                        <a href="#" class="btn btn-primary">See More</a>
+                      </ul>
                     </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Vital Signs</h5>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Blood Pressure: </li>
+                        <li class="list-group-item">Pulse:</li>
+                        <button>Submit</button> <button>Update</button> <button>Add</button>
+                        <a href="#" class="btn btn-primary">See More</a>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Pain Status</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Alert and Oriented</li>
+                            <li class="list-group-item">No Acute Distress</li>
+                            <button>Submit</button> <button>Update</button> <button>Add</button>
+                            <a href="#" class="btn btn-primary">See More</a>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Other</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">PERRLA</li>
+                            <li class="list-group-item">CTA</li>
+                            <button>Submit</button> <button>Update</button> <button>Add</button>
+                            <a href="#" class="btn btn-primary">See More</a>
+                          </ul>
+                        
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
             <hr>
                     <h3 style="text-align:center;">Subjective and Objective</h3>
-                    Make it where you select one, either S/O ------
-                    Link SO to message, where PT can type own SO
-                    <div class="s_o">
+                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                        <div class="col">
+                          <div class="card h-100">
+                            <div class="card-body">
+                              <h5 class="card-title">What is Wrong with Me</h5>
+                              <p class="card-text">'I coughed once and am scared I might have a broken leg'</p>
+                            </div>
+                            <div class="card-footer">
+                                <button>Submit</button> <button>Update</button> <button>Add</button>
+                                <a href="#" class="btn btn-primary">See More</a>
+                                  <small class="text-muted">{Last updated 3 mins ago}</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card h-100">
+                            <div class="card-body">
+                              <h5 class="card-title">What the Doctor Observed</h5>
+                              <p class="card-text">Cry Baby.</p>
+                            </div>
+                            <div class="card-footer">
+                                <button>Submit</button> <button>Update</button> <button>Add</button>
+                            <a href="#" class="btn btn-primary">See More</a>
+                              <small class="text-muted">{Last updated 3 mins ago}</small>
+                            </div>
+                          </div>
+                        </div>
                         
-                        <div class="subje_ct">
-                            <h3>Subjective</h3>
-                        </div>
-                        <div class="obje_ct">
-                            <h3>Observation</h3>
-                        </div>
-                    </div>
+                      </div>
+
             <hr>
                     <div class="plan">
                         <div class="assessment_tabs">
                             <input type="radio" id="as_tab" name="assessment_tabs" checked="checked">
-                            <label for="as_tab">Assessment</label>
+                            <label for="as_tab">Diagnosis</label>
                             <div class="tab">
                                 <div id="app">
                                     <h1>Get Codes</h1>
@@ -112,11 +192,10 @@
                                                 [[icd]]
                                             </option>
                                         </select>
-                                        <button onclick="myFunction([[index]])" class="btn btn-danger">Submit</button>   
+                                        <button id="id_diagnosis" class="btn btn-danger">Submit</button>   
                                     </form>
 
                                     <form action="" id="code-form">
-
                                         <div>
                                                {% csrf_token %}
                                                
@@ -130,6 +209,7 @@
                                        </form>
 
                                 </div>
+                                
                                         
                             </div>
                             <input type="radio" id="lab_tab" name="assessment_tabs">
@@ -161,12 +241,8 @@
                                     <h3>Medical Problems</h3>
                                     
                                     <div class="container-fluid">
-                                        <table class="table table-striped table-sm" id="my_friends">
-                                            <thead>
-                                                <tr>
-                                    
-                                                </tr>
-                                            </thead>
+                                        <table class="table table-striped table-sm" id="the_icd_codes">
+                                            
                                             <tbody>
                                             {% for icdcodes in code_forms %}
                                             <tr>
@@ -187,6 +263,12 @@
                         </div>
                     </div>
                     </div>
+            <hr>
+<div class="card-footer" style="text-align: center;">
+
+<button>Submit Note</button> <button>Update Note</button> <button>Delete Note</button>
+<small class="text-muted">Note signed on {date} by {Doctor}</small>
+</div>
             <hr>
                     <div class="billing">
                         <h2 style="text-align: center;">Patients Bill</h2>
@@ -281,13 +363,13 @@
                                 // on successfull creating object
                                 // 1. clear the form.
                                 $("#code-form").trigger('reset');
-                                // 2. focus to nickname input 
+                                // 2. The diagnosis code
                                 $("#id_diagnosis").focus();
                 
-                                // display the newly friend to table.
+                                
                                 var instance = JSON.parse(response["instance"]);
                                 var fields = instance[0]["fields"];
-                                $("#my_friends tbody").prepend(
+                                $("#the_icd_codes tbody").prepend(
                                     `<tr>
                                     <td>${fields["diagnosis"]||""}</td>
                                     </tr>`
@@ -299,6 +381,8 @@
                             }
                         })
                     })
+
+                    
                 </script>
                 
         
