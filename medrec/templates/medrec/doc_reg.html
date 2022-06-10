@@ -11,13 +11,24 @@
 <body>
     
     {% block content %}
-    <h1 style="text-align:center;">Doctor Register Page</h1>
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{form|crispy}}
-            <button type="submit" class="btn btn-success">Register</button>
-        </form>
-        <p class="text-center">Login here if you already have an account, <a href="{% url 'doclogin' %}">Login</a></p>
+    <div class="mx-auto mt-5 pt-3" style="max-width: 50rem;">
+        <div class="card-header">
+            <h4>Physician Registration</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-success">Register</button>
+            </form>
+          </p>
+          <p>Or</p>
+        </div>
+        <div class="card-footer text-muted">
+            <p class="text-center">Login here if you already have an account, <a class="btn btn-primary" href="{% url 'doclogin' %}">Login</a></p>
+        </div>
+    </div>
 
     {% endblock content %}
     

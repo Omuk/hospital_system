@@ -116,7 +116,7 @@ def coder_login(request):
                     return redirect (request.POST.get('next'))
                 else:
                     messages.info(request, f"Successful Login {username}")
-                    return redirect('recview')
+                    return redirect('patrec')
             else:
                 messages.error(request, 'Invalid Credentials')
     else:

@@ -10,15 +10,28 @@
 </head>
 <body>
     {% block content %}
-        <div class="container py-5">
-            <h1 style="text-align:center;">Coder Login Page</h1>
+
+    <div class="mx-auto mt-5 pt-3" style="max-width: 50rem;">
+        <div class="card-header">
+            Coder Login
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Please Login</h5>
+          <p class="card-text">With the right Credential.
             <form action="" method="POST">
                 {% csrf_token %}
                 {{form|crispy}}
+                <br>
                 <button class="btn btn-primary" type="submit">Login</button>
             </form>
-            <button class="text-center">Click here to <a href="{% url 'coderreg' %}">Register</a></button>
+          </p>
+          <p>Or</p>
         </div>
+        <div class="card-footer text-muted">
+            <p class="text-center">Click here to, <a class="btn btn-primary" href="{% url 'coderreg' %}">Register</a></p>
+        </div>
+    </div>
+
 {% endblock content %}
     
 </body>

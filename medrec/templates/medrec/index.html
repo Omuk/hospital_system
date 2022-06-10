@@ -11,25 +11,42 @@
 
 <body>
     {% block content %}
-    <h1>This is the HomePage</h1>
     <div>
-        <h4>Please Register with right credentials</h4>
-        <div>
-            <span><a href="{% url 'docreg' %}">Doctor Registration</a></span>
-        </div>
-        <div>
-            <span><a href="{% url 'coderreg' %}">Coder Registration</a></span> 
-        </div>
-    </div>
-    <div>
-        <h4>Or Please Login with right credentials if you already Have an Account</h4>
-        <div>
-            <span><a href="{% url 'doclogin' %}">Doctor Login</a></span>
-        </div>
-        <div>
-            <span><a href="{% url 'coderlogin' %}">Coder Login</a></span> 
-        </div>
-    </div>
+        <div class="card text-center">
+            <div class="card-header">
+              <h2>Care of, And By Champions</h2>
+            </div>
+            <div class="card-body">
+                <br>
+    
+              <h4 class="card-title">Staff Registration</h4>
+              <br>
+              <a href="{% url 'docreg' %}" class="btn btn-primary">Doctor Registration</a>
+              <a href="{% url 'coderreg' %}" class="btn btn-primary">Coder Registration</a>
+            </div>
+            <div class="card-footer text-muted">
+              <br>
+              <br>
+              <h3 style="color:skyblue;">Or Login Below</h3>
+              <br>
+              <br>
+            </div>
+          </div>
+          <div class="card text-center">  
+            <div class="card-body">
+              <h2 class="card-title">Staff Login</h2>
+              <br>
+              <a href="{% url 'doclogin' %}" class="btn btn-primary">Doctor Login</a>
+              <a href="{% url 'coderlogin' %}" class="btn btn-primary">Coder Login </a>
+              
+            </div>
+            <br>
+            <div class="card-footer text-muted">
+              <br>
+              <h5>Copyright &copy; 2022| All Rights Reserved</h5>
+            
+          </div>
+
     
     {% endblock content %}
 </body>
